@@ -1,0 +1,9 @@
+{
+    "type": "object",
+    "properties": {
+      "item": { "type": "string" },
+      "type": { "type": "string" },
+      "color": { "type": "string" },
+      "size": { "type": "string" }
+    }
+}
