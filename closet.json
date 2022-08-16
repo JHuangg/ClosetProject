@@ -1,4 +1,10 @@
 [
     {"item": "White T-Shirt", "type": "Shirt", "color": "White", "size": "M"},
-    {"item": "Jeans", "type": "Pants", "color": "Black", "size": "30"}
+    {"item": "Jeans", "type": "Pants", "color": "Black", "size": "30"},
+    {"item": "Winter Jacket", "type": "Jacket", "color": "Black", "size": "M"},
+    {"item": "Purple Hoodie", "type": "Sweater", "color": "Purple", "size": "M"},
+    {"item": "Jordan 1", "type": "Shoes", "color": "Red", "size": "9.5"},
+    {"item": "Winter Blundstones", "type": "Boots", "color": "Black", "size": "9.5"},
+    {"item": "Converse", "type": "Shoes", "color": "Blue", "size": "9.5"},
+    {"item": "Black T-Shirt", "type": "Shirt", "color": "Black", "size": "M"}
 ]
