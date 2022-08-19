@@ -7,11 +7,11 @@ import random
 
 weather = 35
 
-TOKEN = 'MTAwODg2NTMzMzMzNzE0NTM0NQ.GAW5jL.Ez9XYFCnOwQ2SZ9eQUsPcLkikrAYJXhHoJfehw'
+TOKEN = ''
 CMD_PREFIX = "!"
 
 BASE_URL = 'http://api.openweathermap.org/data/2.5/weather?'
-API_KEY = 'd98de545923f862fce0481797ebdf2dc'
+API_KEY = ''
 CITY = 'Toronto'
 weatherURL = BASE_URL + "appid=" + API_KEY + "&q=" + CITY
 
