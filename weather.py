@@ -5,27 +5,36 @@ import json
 def convertTemp(kelvin):
     return(kelvin - 273.15)
 
-def parseData(data):
+def parseTemp(data):
     dataMain = data['main']
     kelvinTemp = dataMain['temp']
     kelvinFeelingTemp = dataMain['feels_like']
     currentTemp = int(convertTemp(kelvinTemp))
     currentFeeling = int(convertTemp(kelvinFeelingTemp))
-    return (f"The current weather is {currentTemp}°C and the current feeling is {currentFeeling}°C")
+    return [currentTemp,currentFeeling]
 
-def appropriateClothing(weather, weatherDescription):
+def appropriateClothing(data):
     clothingRecommendations = []
     with open('closet.json') as inv:
         closet_data = json.load(inv)
+
+    dataMain = data['main']
+    kelvinTemp = dataMain['temp']
+    currentTemp = int(convertTemp(kelvinTemp))
+
+    dataWeather = data['weather']
+    dataDescription = dataWeather[0]['description']
     
-    if weather <= 0 or weatherDescription == 'snowing':
+    if currentTemp <= 0 or dataDescription == 'snowing':
         for item in closet_data:
             if item['type'] == "Jacket" or item['type'] == "Boots":
                 clothingRecommendations.append(item)
 
-    elif 0 < weather <= 21:
+    elif 0 < currentTemp <= 21:
         for item in closet_data:
             if item['type'] == "Sweater":
+                clothingRecommendations.append(item)
+            elif item['type'] == "Pants":
                 clothingRecommendations.append(item)
     else:
         for item in closet_data:
@@ -34,4 +43,3 @@ def appropriateClothing(weather, weatherDescription):
 
     return clothingRecommendations
 
-print(appropriateClothing(-42, "nothing"))
