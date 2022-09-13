@@ -13,4 +13,15 @@ def sentiment_vader(sentence):
     else:
         return "neutral"
 
-print(sentiment_vader("The movie was bad"))
+with open("example_reviews.txt", "r") as f:
+    reviews = f.readlines()
+    
+review_polarity = []
+# print(range(len(reviews)))
+for i in range(len(reviews)):
+    result = sentiment_vader(reviews[i])
+    review_polarity.append(result)
+
+print(review_polarity)
+
+# print(sentiment_vader("The movie was bad"))
