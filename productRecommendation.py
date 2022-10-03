@@ -13,7 +13,7 @@ def sentiment_vader(sentence):
     else:
         return "neutral"
 
-with open("example_reviews.txt", "r") as f:
+with open("reviews.txt", "r") as f:
     reviews = f.readlines()
     
 review_polarity = []

@@ -40,14 +40,14 @@ async def on_message(message):
 
             top = outfit[0]["item"]
             bottom = outfit[1]["item"]
-            
-            
             embed_message = discord.Embed(title="Recommended Outfit:", description=f"Recommended Top: {top}{new_line}Recommended Bottom: {bottom}",color=discord.Color.blue())
             embed_message.set_thumbnail(url="https://i.imgur.com/8oNmixC.jpg")
             embed_message.set_footer(text="These are the recommended outfits for the day. Have an amazing day!")
 
             await message.channel.send(embed=embed_message)
 
+        if user_message.lower() == "!review_product":
+            
            
             
 
