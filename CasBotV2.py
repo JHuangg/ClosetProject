@@ -2,16 +2,18 @@ import discord
 from discord.ext import commands
 import json
 from weather import *
+from productRecommendation import *
 import requests
 import random
+import os
 
 weather = 35
 
-TOKEN = 'MTAwODg2NTMzMzMzNzE0NTM0NQ.GAW5jL.Ez9XYFCnOwQ2SZ9eQUsPcLkikrAYJXhHoJfehw'
+# TOKEN = 
 CMD_PREFIX = "!"
 
 BASE_URL = 'http://api.openweathermap.org/data/2.5/weather?'
-API_KEY = 'd98de545923f862fce0481797ebdf2dc'
+# API_KEY = 
 CITY = 'Toronto'
 weatherURL = BASE_URL + "appid=" + API_KEY + "&q=" + CITY
 
@@ -47,11 +49,20 @@ async def on_message(message):
             await message.channel.send(embed=embed_message)
 
         if user_message.lower() == "!review_product":
+            await message.channel.send("Please enter a product link")
+            try:
+                response = await client.wait_for("message", timeout=60.0)
+            except:
+                await message.channel.send("Sorry please respond faster with a URL! 60 second timeout")
             
-           
-            
+            # take product and scrape lulu site
+            os.system(f'scrapy crawl lulu -o reviews.txt -a url={response.content}')
 
-        #elif user_message.lower() == "!outfit":
-            #pickOutfit()
+            #results are now placed in reviews.txt
+            product_sentiment = provide_sentiment()
+            await message.channel.send(f"Your product has the following sentiment: {product_sentiment}")
+
+        if user_message.lower() == "!suggest":
+            await message.channel.send("Please send a photo of desired outfit")
 
 client.run(TOKEN)

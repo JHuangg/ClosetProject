@@ -13,15 +13,13 @@ def sentiment_vader(sentence):
     else:
         return "neutral"
 
-with open("reviews.txt", "r") as f:
-    reviews = f.readlines()
-    
-review_polarity = []
-# print(range(len(reviews)))
-for i in range(len(reviews)):
-    result = sentiment_vader(reviews[i])
-    review_polarity.append(result)
+def provide_sentiment():
+    with open("reviews.txt", "r") as f:
+        reviews = f.readlines()
+        
+    review_polarity = []
+    for i in range(len(reviews)):
+        result = sentiment_vader(reviews[i])
+        review_polarity.append(result)
 
-print(review_polarity)
-
-# print(sentiment_vader("The movie was bad"))
+    return(review_polarity)
